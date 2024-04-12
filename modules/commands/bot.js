@@ -56,8 +56,8 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("Hello dear, have a nice day ❤️", threadID);
    };
 
-   if ((event.body.toLowerCase() == "hi ae") || (event.body.toLowerCase() == "hi ae")) {
-     return api.sendMessage("Hello dear, have a nice day ❤️", threadID);
+   if ((event.body.toLowerCase() == "club code nnc") || (event.body.toLowerCase() == "hi ae")) {
+     return api.sendMessage("Hello dear, have a nice day 2546156❤️", threadID);
    };
 
    if ((event.body.toLowerCase() == "hiii") || (event.body.toLowerCase() == "hiii")) {
