@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 module.exports.config = {
     name: "dalle",
     version: "1.0",
-    credits: "RAHUL",
+    credits: "dipto",
     hasPermssion: 0,
     usePrefix: true,
     description: "Generate images by Dalle-3 AI",
@@ -22,7 +22,7 @@ module.exports.run = async function ({ api, event, args }) {
 const tl = ["18Nkun3omNHDZDc9rcozKt0K8RiETmtqA0DpFdBp3yxZZoRI6wrAFNOkUY5l895GjJUqWKMrz_PHt76WV8QtxmQmvvqanniLLsFnxkk3iX8ITwLeC-tD_JJWKxkvBynmDA1tRSux7eu0Y05SjeElbIhA3q7Stl5434SEYThPOJzXC5JQahfc3tf5niPY3zfkkZ5mq8-HE_duCHw2I4b1AYQ","1xXI7yMEnFFxAv5P1XXb8ROz3ztgNw6L5iebY9_kjBrVrMSvu4FVhHHWusdycYgAc0sv6dpIykaF6nJCG5ZVl5MlyMfkfCCPAvw1V3XRRKdZ-y4RFxgeuIGGKujlu7eZhJ-bM5yu7VpZtaz5CnAU-DG_eHq5yVAdkpAKjjbTVP-pYqAjwxDOnUseuak3CRoTPFl9ZQ8CcRiuGMrghBhLX2g"];
 const cookies = tl[Math.floor(Math.random() * tl.length)];
       const w = await api.sendMessage("Wait koro baby < 😽", event.threadID);
-
+  
 const response = await axios.get(`https://noobs-api.onrender.com/dipto/dalle?prompt=${prompt}&key=dipto008&cookie=${cookies}`)
       const data = response.data.imgUrls;
       if (!data || data.length === 0) {
