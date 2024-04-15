@@ -1,33 +1,108 @@
-const fs = global.nodemodule["fs-extra"];
+const axios = require('axios');
+
 module.exports.config = {
-  name: "goibot2",
-  version: "1.0.1",
-  hasPermssion: 0,
-  credits: "Fixed By 🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺",
-  description: "goibot2",
-  commandCategory: "Noprefix",
-  usages: "noprefix",
-  cooldowns: 5,
-};
-module.exports.handleEvent = async function({ api, event, args, Threads, Users }) {
-  var { threadID, messageID, reason } = event;
-  const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Kolkata").format("DD/MM/YYYY || HH:mm:ss");
-  var idgr = `${event.threadID}`;
-  var id = event.senderID;
-  var name = await Users.getNameUser(event.senderID);
-
-  var tl = ["Main Tenu Smjhava ki, Naa Yere bina lagda jee, tu ki jaane pyar mera , me kru intezaar tera .." , "Tere ishq me pagal hogya, Diwana Tera Re, sach hote hote hogya afsana mera re" , "Chahat Kasam Nahin Hai, Koi Rasam Nahin Hai ,Dil Ka vaham Nahin Hai Pana Hai Tujhko Khwabon Mein Gaon Jiska, rasta na aam jiska , Chahat Hai Naam Jiska, Pana Hai Tujhko" , "Kyu Bewaja di Ye saza ,kyu Khwab deke wo legy, jiye jo hum, lage sitam , azab ese wo degya.." , "Jaati hu me , jaldj hai kya ,dhadke jiya , wo kyu bhala , khud se hi darne lagi hu , me pyar krne lgi hu" , "Tu naa jaan di, ha kaarobar ni, jaali number plate lagi car di, saare yaar ni bethe bahr ni, kde jaan ni jo lga dabb nall , ha face utte a glow, puchi naa tikaane sare rhnde aa ni low, ek do" , "kehndi hundi si chann tak raah banade , taare ne pasand menu heyha saare laade , ohna tareya de vicho jado menu dekhegi ni meri yaad jado au, odo pata laggu ga" , "Ham Tere Bin Ab Rah Nahin Sakte Tere Bina Kya wajood Mera Tujhse Judaa Gar Ho Jaenge Khud Se Hi Ho Jaenge Juda" , "Kal raaste me , gum mil gya tha, lag ke gale me ro diy ,jo sirf mera , tha sirf mera , mene use ku kho diya , haa wo ankhe jinhe me chum ta bewajah , pyaar mere liye kyu unme baki naa rha .." , " Tu Aata Hai Seene Mein Jab Jab Saanse Bharti Hun Tere Dil Ki Galiyon se main har roj Gujarti hun Hawa ke jaise chalta hai tu main ret Jaise Murti hun Kaun Tujhe Yun Pyar Karega Jaise Main Karti hun" , "waqt Bhi thahara Hai Kaise Kyun ye Hua Kash Tu Aise Aaye Jaise koi Dua Yeh Meri zamanat Hai Tu Meri Ibadat Hai Apne Karm Ki Kar adaen Kar Le idhar Bhi Tu Nigahen Sun Raha Hai Na Tu Ro Raha Hun Main" , "Kyon Ek Pal Ki Bhi Judaai sahi jaaye na kyon Har Subah Tu Meri Sanson Mein Samaye na Aaja Na Tu mere pass Dunga Itna Pyar Kitni Raat Gujari hai tere Intezar Mein" , " uska hun ,usmein hun ,use hun Usi Ka Rahane De Main To Pyasa Hoon Hai Dariya O zariya wo Jeene Ka Mere, Dil Mujhe De Agar ,Dard De uska per ,uski ho vah Hansi Gunje Jo Mera Ghar" , "Ese jaruri ho mujhko tum, jese hawaye saaso ko,ese talashu me tumko , jese ke per zamino ko,hasna ya rona ho mujhe, pagal sa dhundo me tumhe, kal mujhse mohabbat ho na ho , kal mujhko ijazat ho na ho ,toote dil ke tookde lekar tere dar pe bi reh jauga, mai phir b tumko chahuga ❤😓" , "mai jarurat hu teri , tu jaroori hai mujhe , maanta hu bin tere hai adhoori mehfile, kam nahi jashn se ye akelapan mera , sath h raat din ye diwana pan mera , tou mujhe na kbhi mud k awaj du me sunuga tumhe har jagah , mene tera nam dil❤ rkh diya" , "Tumhe bolna pasand hai , mujhe bolte huye tum , tumhe hasna psand hai , mujhe haste huye tum, bas itna hi fark hai, teri meri pasnd me, tum ye sab pasnd hai aur mujhe pasnd ho tum" , "Jo bhi jitne pal jiyu unhe tere sang jiu, jo bhi kal ho ab mera , use tere sang jiyu , jo bhi saanse me bhru unhe tere sang bharu , chahe jo ho rasta ,use sang chalu"]
-  var rand = tl[Math.floor(Math.random() * tl.length)]
-   mess = "{name}"
-
-  if (event.body.indexOf("Song") == 0 || (event.body.indexOf("song") == 0)) {
-    var msg = {
-      body: `𝗛𝗲𝗹𝗹𝗼 🎵${name}🔊,  \n\n𝗧𝗵𝗶𝘀 𝗶𝘀 𝗙𝗼𝗿 𝘆𝗼𝘂💞 »»\n『\n   ${rand}  』\n\n𝙲𝚛𝚎𝚍𝚒𝚝𝚜»» ◎ 🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺 ◎`
+    name: "baby",
+    aliases: ["baby", "bbe", "babe" ],
+    version: "6.9.0",
+    credits: "RAHUL",
+    cooldowns: 0,
+    hasPermssion: 0,
+    description: "Chat with bot",
+    commandCategory: "chat",
+    usages: "{pn}[anyMessage] teach [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR remove [YourMessage] - [indexNumber] or msg or list OR edit [YourMessage] - [NewReply]"
+  },
+module.exports.run = async ({ api, event, args }) => {
+const link = "https://noobs-api.onrender.com/dipto/baby";
+  const dipto = args.join(" ").toLowerCase();
+      const uid = event.senderID;
+      let command;
+      let comd;
+      let final;
+      try{
+      if(!args[0]){
+        const ran = ["Bolo baby","hum","type help baby"];
+        const r = ran[Math.floor(Math.random() * ran.length)];
+    return api.sendMessage(r,event.threadID,event.messageID);
+      }
+//-------------------------------------------//
+      else if (args[0] === 'remove') {
+      const fina = dipto.replace("remove ", "");
+            const respons = await axios.get(`${link}?remove=${fina}`);
+            const dat = respons.data.message;
+            api.sendMessage(`${dat}`, event.threadID, event.messageID);
+        }
+      //------------------------------------//
+    else if (args[0] === 'rm' && dipto.includes('-')) {
+          const fina = dipto.replace("rm ", "");
+         const fi = fina.split(' - ')[0]
+         const f = fina.split(' - ')[1]
+            const respons = await axios.get(`${link}?remove=${fi}&index=${f}`);
+            const da = respons.data.message;
+            api.sendMessage(`${da}`, event.threadID, event.messageID);
     }
-    return api.sendMessage(msg, threadID, messageID);
-  };
+  //-------------------------------------//
+       else if (args[0] === 'list') {
+            const respo = await axios.get(`${link}?list=all`);
+            const d = respo.data.length;
+            api.sendMessage(`Total Teach = ${d}`, event.threadID, event.messageID);
+        }
+    //-------------------------------------//
+          else if (args[0] === 'msg' || args[0] === 'message') {
+      const fuk = dipto.replace("msg ", "");
+            const respo = await axios.get(`${link}?list=${fuk}`);
+            const d = respo.data.data;
+            api.sendMessage(`Message ${fuk} = ${d}`, event.threadID, event.messageID);
+          }
+  //-------------------------------------//
+        else if (args[0] === 'edit') {
+            const command = dipto.split(' - ')[1];
+            if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const res = await axios.get(`${link}?edit=${args[1]}&replace=${command}`);
+            const dA = res.data.message;
+            api.sendMessage(`changed ${dA}`, event.threadID, event.messageID);
+        } 
+ //-------------------------------------//
 
+        else if (args[0] === 'teach' && args[1] !== 'amar'){
+           command = dipto.split(' - ')[1];
+          comd = dipto.split(' - ')[0];
+          final = comd.replace("teach ", "");
+                if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const re = await axios.get(`${link}?teach=${final}&reply=${command}`);
+            const tex = re.data.message;
+            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+        }
+  //-------------------------------------//
+    else if (args[0] === 'teach' && args[1] === 'amar'){
+         command = dipto.split(' - ')[1];
+          comd = dipto.split(' - ')[0];
+          final = comd.replace("teach ", "");
+            if (command.length < 2) {
+                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
+            }
+            const re = await axios.get(`${link}?teach=${final}&senderID=${uid}&reply=${command}`);
+            const tex = re.data.message;
+            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
+        }
+     //-------------------------------------//
+        else if (dipto.includes('amar name ki') || dipto.includes('amr nam ki') || dipto.includes('amar nam ki') || dipto.includes('amr name ki')){
+        const response = await axios.get(`${link}?text=amar name ki&senderID=${uid}`);
+        const data = response.data.reply;
+        api.sendMessage(`${data}`, event.threadID, event.messageID);
+           }
+  //----------------------------------//
+      else {
+        const response = await axios.get(`${link}?text=${dipto}`);
+        const data = response.data.reply;
+        api.sendMessage(`${data}`, event.threadID, event.messageID);
+           }
+      } catch (e){
+        console.log(e)
+        api.sendMessage("Check console for error ",event.threadID,event.messageID);
+      }
+    }
 }
-
-module.exports.run = function({ api, event, client, __GLOBAL }) { }
