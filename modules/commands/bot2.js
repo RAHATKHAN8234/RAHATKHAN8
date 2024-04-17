@@ -2,7 +2,7 @@ const axios = require('axios');
 
 module.exports.config = {
     name: "sona",
-    aliases: ["bow", "koliza", "babe" ],
+    aliases: ["bow", "koliza", "baby" ],
     version: "6.9.0",
     credits: "RAHUL",
     cooldowns: 0,
