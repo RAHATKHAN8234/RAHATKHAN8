@@ -4,10 +4,10 @@ const path = require('path');
 
 module.exports = {
   config: {
-    name: "dalle",
+    name: "dalle3",
     aliases: ["dalle","bing","create","imagine"],
     version: "1.0",
-    author: "RAHUL",
+    author: "Dipto",
     countDown: 15,
     role: 0,
     shortDescription: "Generate images powerby by Dalle3",
@@ -51,4 +51,4 @@ const response = await axios.get(`${global.GoatBot.config.api}/dalle?prompt=${pr
       await api.sendMessage(`Generation failed!\nError: ${error.message}`,event.threadID, event.messageID);
     }
   }
-}
+} 
