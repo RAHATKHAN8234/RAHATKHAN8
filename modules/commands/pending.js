@@ -1,7 +1,7 @@
 module.exports.config = {
 	name: "pending",
 	version: "1.0.5",
-	credits: "Mirai Team",
+	credits: "RAHAT",
 	hasPermssion: 2,
 	description: "Manage bot's waiting messages",
 	commandCategory: "system",
@@ -22,7 +22,7 @@ module.exports.languages = {
     "en": {
         "invaildNumber": "%1 is not an invalid number",
         "cancelSuccess": "Refused %1 thread!",
-        "notiBox": "Akiri BoT Connected Successfully!\nUse +help for more info :>",
+        "notiBox": "Khan Rahul RK BoT Connected Successfully!\nUse +help for more info :>",
         "approveSuccess": "Approved successfully %1 threads!",
 
         "cantGetPendingList": "Can't get the pending list!",
