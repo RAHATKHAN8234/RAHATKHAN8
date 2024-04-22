@@ -52,8 +52,8 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("https://i.imgur.com/59gU9jA.jpg", threadID);
    };
 
-   if ((event.body.toLowerCase() == "btvv nha mng") || (event.body.toLowerCase() == "btvv nha mng")) {
-     return api.sendMessage("Hello dear, have a nice day ❤️", threadID);
+   if ((event.body.toLowerCase() == "meye") || (event.body.toLowerCase() == "মাইয়া মানুষ")) {
+     return api.sendMessage("দামি মেকাপ করে ফর্সা হইবা আর বিয়ের পা বাচ্চা কালো হলে বলবা যে বাবার মতো হইছে [ইয়ারকি পাইছো]", threadID);
    };
 
    if ((event.body.toLowerCase() == "club code nnc") || (event.body.toLowerCase() == "hi ae")) {
