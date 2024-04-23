@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "koliza",
-    aliases: ["baby", "sona", "bow" ],
+    name: "bow",
+    aliases: ["baby", "bbe", "babe" ],
     version: "6.9.0",
     credits: "RAHUL",
     cooldowns: 0,
@@ -105,4 +105,4 @@ const link = "https://noobs-api.onrender.com/dipto/baby";
         api.sendMessage("Check console for error ",event.threadID,event.messageID);
       }
     }
-} 
+}} 
