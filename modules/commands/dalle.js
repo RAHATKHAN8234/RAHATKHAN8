@@ -8,20 +8,20 @@ module.exports.config = {
     usePrefix: true,
     description: "Generate images by Dalle-3 AI",
     commandCategory: "download",
-    usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written RAHUL and 69 on the back of his Dress , 4k]",
+    usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
     cooldowns: 5
   };
 
 module.exports.run = async function ({ api, event, args }) {
   const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
   if (!prompt) {
-   return api.sendMessage("❌| Wrong Formet .✅ | Use 17/18 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k",event.threadID,event.messageID);
+   return api.sendMessage("❌| use /dalle a cat , 4k",event.threadID,event.messageID);
   }
     try {
-      //const cookies = "cookies here (_U value)";
-const tl = ["18Nkun3omNHDZDc9rcozKt0K8RiETmtqA0DpFdBp3yxZZoRI6wrAFNOkUY5l895GjJUqWKMrz_PHt76WV8QtxmQmvvqanniLLsFnxkk3iX8ITwLeC-tD_JJWKxkvBynmDA1tRSux7eu0Y05SjeElbIhA3q7Stl5434SEYThPOJzXC5JQahfc3tf5niPY3zfkkZ5mq8-HE_duCHw2I4b1AYQ ","cookies 2"];
+      //const cookies = "1xXI7yMEnFFxAv5P1XXb8ROz3ztgNw6L5iebY9_kjBrVrMSvu4FVhHHWusdycYgAc0sv6dpIykaF6nJCG5ZVl5MlyMfkfCCPAvw1V3XRRKdZ-y4RFxgeuIGGKujlu7eZhJ-bM5yu7VpZtaz5CnAU-DG_eHq5yVAdkpAKjjbTVP-pYqAjwxDOnUseuak3CRoTPFl9ZQ8CcRiuGMrghBhLX2g";
+const tl = ["1oXcpkxHiEtBj0YQYOhnTPWKOb8hQwVrm5YcqQ6IZXlzXy7DLtZsZoTbSvc-ZPLLEEDKZNG54Ba1m_eDBEtefmXBr96VYrBsAmvWThoqKzxYoC6U7sfym6JeMhXZq23f6XhwuJYTTgy92QU1OKzHYC6PlWa4_ZakywYLoAWEz2Ht7ESTBdrJGwB0h3FYKV7suqNiMQb8NWZrjrKP8jhm1aQ"];
 const cookies = tl[Math.floor(Math.random() * tl.length)];
-      const w = await api.sendMessage("একটু সময় অপেক্ষা করো কলিজা 🄲🅁🄴🄰🅃🄴 🄱🅈 🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺  😽", event.threadID);
+      const w = await api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐖𝐚𝐢𝐭 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐈𝐦𝐠𝐚𝐞 🐥💫", event.threadID);
   
 const response = await axios.get(`https://noobs-api.onrender.com/dipto/dalle?prompt=${prompt}&key=dipto008&cookie=${cookies}`)
       const data = response.data.imgUrls;
@@ -38,7 +38,7 @@ const response = await axios.get(`https://noobs-api.onrender.com/dipto/dalle?pro
       }
       await api.unsendMessage(w.messageID);
       await api.sendMessage({
-  body: `✅ এই নাও কলিজা তোমার লগো 🄲🅁🄴🄰🅃🄴 🄱🅈 🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺 <😘`,
+  body: `𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐈𝐦𝐚𝐠𝐞 🐥💫`,
         attachment: diptoo
       },event.threadID, event.messageID);
     } catch (error) {
