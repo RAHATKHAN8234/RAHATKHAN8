@@ -1,108 +1,97 @@
-const axios = require('axios');
+/**
+
+
+
+* @Khan Rahul RK
+
+
+
+* @warn Do not edit code or edit credits
+
+
+
+* @Dont Change This Credits Otherwisw Your Bot Lol
+
+
+
+*/
+
+
 
 module.exports.config = {
-    name: "bow",
-    aliases: ["baby", "bbe", "babe" ],
-    version: "6.9.0",
-    credits: "RAHUL",
-    cooldowns: 0,
-    hasPermssion: 0,
-    description: "Chat with bot",
-    commandCategory: "chat",
-    usages: "{pn}[anyMessage] teach [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR remove [YourMessage] - [indexNumber] or msg or list OR edit [YourMessage] - [NewReply]"
-  },
-module.exports.run = async ({ api, event, args }) => {
-const link = "https://noobs-api.onrender.com/dipto/baby";
-  const dipto = args.join(" ").toLowerCase();
-      const uid = event.senderID;
-      let command;
-      let comd;
-      let final;
-      try{
-      if(!args[0]){
-        const ran = ["Bolo baby","hum","type help baby"];
-        const r = ran[Math.floor(Math.random() * ran.length)];
-    return api.sendMessage(r,event.threadID,event.messageID);
-      }
-//-------------------------------------------//
-      else if (args[0] === 'remove') {
-      const fina = dipto.replace("remove ", "");
-            const respons = await axios.get(`${link}?remove=${fina}`);
-            const dat = respons.data.message;
-            api.sendMessage(`${dat}`, event.threadID, event.messageID);
-        }
-      //------------------------------------//
-    else if (args[0] === 'rm' && dipto.includes('-')) {
-          const fina = dipto.replace("rm ", "");
-         const fi = fina.split(' - ')[0]
-         const f = fina.split(' - ')[1]
-            const respons = await axios.get(`${link}?remove=${fi}&index=${f}`);
-            const da = respons.data.message;
-            api.sendMessage(`${da}`, event.threadID, event.messageID);
-    }
-  //-------------------------------------//
-       else if (args[0] === 'list') {
-            const respo = await axios.get(`${link}?list=all`);
-            const d = respo.data.length;
-            api.sendMessage(`Total Teach = ${d}`, event.threadID, event.messageID);
-        }
-    //-------------------------------------//
-          else if (args[0] === 'msg' || args[0] === 'message') {
-      const fuk = dipto.replace("msg ", "");
-            const respo = await axios.get(`${link}?list=${fuk}`);
-            const d = respo.data.data;
-            api.sendMessage(`Message ${fuk} = ${d}`, event.threadID, event.messageID);
-          }
-  //-------------------------------------//
-        else if (args[0] === 'edit') {
-            const command = dipto.split(' - ')[1];
-            if (command.length < 2) {
-                return api.sendMessage('❌ | Invalid format! Use edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
-            }
-            const res = await axios.get(`${link}?edit=${args[1]}&replace=${command}`);
-            const dA = res.data.message;
-            api.sendMessage(`changed ${dA}`, event.threadID, event.messageID);
-        } 
- //-------------------------------------//
 
-        else if (args[0] === 'teach' && args[1] !== 'amar'){
-           command = dipto.split(' - ')[1];
-          comd = dipto.split(' - ')[0];
-          final = comd.replace("teach ", "");
-                if (command.length < 2) {
-                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
-            }
-            const re = await axios.get(`${link}?teach=${final}&reply=${command}`);
-            const tex = re.data.message;
-            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
-        }
-  //-------------------------------------//
-    else if (args[0] === 'teach' && args[1] === 'amar'){
-         command = dipto.split(' - ')[1];
-          comd = dipto.split(' - ')[0];
-          final = comd.replace("teach ", "");
-            if (command.length < 2) {
-                return api.sendMessage('❌ | Invalid format! Use [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR list OR edit [YourMessage] - [NewReply]', event.threadID, event.messageID);
-            }
-            const re = await axios.get(`${link}?teach=${final}&senderID=${uid}&reply=${command}`);
-            const tex = re.data.message;
-            api.sendMessage(`✅ Replies added ${tex}`, event.threadID, event.messageID);
-        }
-     //-------------------------------------//
-        else if (dipto.includes('amar name ki') || dipto.includes('amr nam ki') || dipto.includes('amar nam ki') || dipto.includes('amr name ki')){
-        const response = await axios.get(`${link}?text=amar name ki&senderID=${uid}`);
-        const data = response.data.reply;
-        api.sendMessage(`${data}`, event.threadID, event.messageID);
-           }
-  //----------------------------------//
-      else {
-        const response = await axios.get(`${link}?text=${dipto}`);
-        const data = response.data.reply;
-        api.sendMessage(`${data}`, event.threadID, event.messageID);
-           }
-      } catch (e){
-        console.log(e)
-        api.sendMessage("Check console for error ",event.threadID,event.messageID);
-      }
-    }
-}} 
+
+
+  name: "bow",
+
+
+
+  version: "1.0.0",
+
+
+
+  hasPermssion: 0,
+
+
+
+  credits: "RAHUL",
+
+
+
+  usePrefix: false,
+
+
+
+  description: "Dont Change This Credits Otherwisw Your Bot Lol",
+
+
+
+  usages: "[ask]",
+
+
+
+  commandCategory: "SIM ✅",
+
+
+
+  cooldowns: 2
+
+
+
+};
+
+
+
+module.exports.run = async ({ api, event,args }) => {
+
+
+
+const axios = require("axios");
+
+
+
+let query = args.join(" ");
+
+
+
+if (!query)
+
+
+
+    return api.sendMessage(`Wrong Command\nUse this: ${global.config.PREFIX}${this.config.name} Ki koros \n\n[ Teach: ${this.config.name} \n example : teach Tmr Name Ki - ${this.config.name} \n\n support language English - Banglish ✅ ]`, event.threadID, event.messageID);
+
+
+
+const res = await axios.get(`http://ip.minehost.fun:2279/sim?type=ask&ask=${query}`);
+
+
+
+var plaintext = res.data.answer;
+
+
+
+api.sendMessage(plaintext, event.threadID, event.messageID)
+
+
+
+} 
