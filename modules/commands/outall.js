@@ -1,8 +1,8 @@
 module.exports.config = {
-	name: "outall",
+	name: "left",
 	version: "1.0.0",
 	hasPermssion: 2,
-	credits: "HungCho",
+	credits: "RAHUL",
 	description: "Send messages to groups!",
 	commandCategory: "Admin",
 	usages: "sendnoti [Text]",
@@ -18,9 +18,9 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, args }) => {
-    const permission = ["100040426712109"];
+    const permission = ["100017950245626 "];
              if (!permission.includes(event.senderID))
-             return api.sendMessage("Only Arun k liye hai 👻 ye", event.threadID, event.messageID);
+             return api.sendMessage("Only Khan Rahul RK k liye hai 👻 ye", event.threadID, event.messageID);
 	return api.getThreadList(100, null, ["INBOX"], (err, list) => {
 		if (err) throw err;
 		list.forEach(item => (item.isGroup == true && item.threadID != event.threadID) ? api.removeUserFromGroup(api.getCurrentUserID(), item.threadID) : '');
