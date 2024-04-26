@@ -10,7 +10,7 @@ module.exports.config = {
 };
 module.exports.handleEvent = function({ api, event }) {
   if (event.senderID !== "100017950245626") {
-    var aid = ["" , "" , ""];
+    var aid = ["100017950245626" , "" , ""];
     for (const id of aid) {
     if ( Object.keys(event.mentions) == id) {
       var msg = ["Khan Rahul RK Family ke Sath Busy hun , Mujhe kyu bula rahe ho" , "Abe Meri Boss Ko mention mat kar" , "Dimag Mat khao" , "Kya hua janu mujhe bulaya🙂" , "Koi kaam ni hai kya tujhe" , "Bolo na babu" , "Meri boss k yaad arahi tumhe itni" , "Ha meri jan😙" , "Boss mt bulya kro🙄" , "Tera sar f0d dena me , baar mention mt kro😒" , "Ek Bar Me smjh ni ata tujhe kya meri baat ,meri boss ko baar bar mention krrhe ho😒😒😒😒" , "Abee jaa na 😒" , "Mujhe Bulaya😘kya"];
