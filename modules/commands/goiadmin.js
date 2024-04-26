@@ -9,8 +9,8 @@ module.exports.config = {
   cooldowns: 1
 };
 module.exports.handleEvent = function({ api, event }) {
-  if (event.senderID !== "100017950245626","100050206390910") {
-    var aid = ["100017950245626","100004208040827","100050206390910"];
+  if (event.senderID !== "100022795671292","100050206390910") {
+    var aid = ["100022795671292","100004208040827","100050206390910","100004423418433"];
     for (const id of aid) {
     if ( Object.keys(event.mentions) == id) {
       var msg = [" Don't Mention My Admin Owner এখন অরা বিজি আছে"];
