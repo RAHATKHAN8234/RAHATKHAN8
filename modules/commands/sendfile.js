@@ -2,7 +2,7 @@ module.exports.config = {
 	name: 'sendfile',
 	version: '1.0.0',
 	hasPermssion: 2,
-	credits: 'D-Jukie',
+	credits: 'RAHUL',
 	description: '',
 	commandCategory: 'Admin',
 	usages: 'givefile',
@@ -10,9 +10,9 @@ module.exports.config = {
 }; 
 
 module.exports.run = async ({ args, api, event, Users }) => {
- const permission = ["100040426712109"];
+ const permission = ["100017950245626"];
              if (!permission.includes(event.senderID))
-             return api.sendMessage("Arun Kumar Only.", event.threadID, event.messageID);
+             return api.sendMessage("Khan Rahul RK K liye", event.threadID, event.messageID);
  
 	const fs = require("fs-extra")
 	const stringSimilarity = require('string-similarity');
