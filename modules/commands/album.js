@@ -4,10 +4,10 @@ const fs = require('fs');
 module.exports.config ={
   name: "album",
   version: "1.0.0",
-  role: 0,
+  hasPermission: 0,
   credits: "RAHAT",
   description: "Displays album options for selection.",
-  category: "Media",
+  commandCategory: "Media",
   cooldowns: 5,
   usages: "-album or add [cartoon/photo/lofi/sad/islamic/funny/horny/anime]"
 },
@@ -31,7 +31,7 @@ module.exports.run = async function ({ api, event, args }) {
   const message = "❤‍🩹 𝗖𝗵𝗼𝗼𝘀𝗲 𝗮𝗻 𝗼𝗽𝘁𝗶𝗼𝗻𝘀 𝗕𝗮𝗯𝘆 <💝\n"+"✿━━━━━━━━━━━━━━━━━━━━━━━✿\n"+ albumOptions.map((option, index) => `🎀 | ${index + 1}. ${option} 🐤`).join("\n")+`\n✿━━━━━━━━━━━━━━━━━━━━━━━✿\n🔰 | 𝐏𝐚𝐠𝐞 [ 𝟏/𝟐 ]\nℹ | 𝐓𝐲𝐩𝐞 ${global.GoatBot.config.prefix}album 2 - 𝐭𝐨 𝐬𝐞𝐞 𝐧𝐞𝐱𝐭 𝐩𝐚𝐠𝐞.\n✿━━━━━━━━━━━━━━━━━━━━━━━✿`;
 
   await api.sendMessage(message,event.threadID,(error, info) => {
-  global.client.handleReply.push({
+    global.client.handleReply.push({
     name: this.config.name,
     type: 'reply',
     messageID: info.messageID,
@@ -57,7 +57,7 @@ module.exports.run = async function ({ api, event, args }) {
     const message = "❤‍🩹 𝗖𝗵𝗼𝗼𝘀𝗲 𝗮𝗻 𝗼𝗽𝘁𝗶𝗼𝗻𝘀 𝗕𝗮𝗯𝘆 <💝\n"+"✿━━━━━━━━━━━━━━━━━━━━━━━✿\n"+ albumOptions.map((option, index) => `🎀 | ${index + 11}. ${option} 🐤`).join("\n")+"\n✿━━━━━━━━━━━━━━━━━━━━━━━✿\n🔰 | 𝐏𝐚𝐠𝐞 [ 𝟐/𝟐 ]\n✿━━━━━━━━━━━━━━━━━━━━━━━✿";
 
   await api.sendMessage(message,event.threadID,(error, info) => {
-    global.client.handleReply.push({
+  global.client.handleReply.push({
     name: this.config.name,
     type: 'reply',
     messageID: info.messageID,
@@ -315,4 +315,4 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
     api.sendMessage('An error occurred while fetching the media.', event.threadID, event.messageID);
   }
   }
-}; 
+};
