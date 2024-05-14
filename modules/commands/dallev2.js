@@ -38,7 +38,7 @@ const response = await axios.get(`https://96q5hj-3000.csb.app/dalle?prompt=${pro
       }
       await api.unsendMessage(w.messageID);
       await api.sendMessage({
-  body: `𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐈𝐦𝐚𝐠𝐞 😘💫`,
+  body: `𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞 𝐘𝐨𝐮𝐫 𝐈𝐦𝐚𝐠𝐞\n\n𝐂𝐫𝐞𝐚𝐭𝐞 𝐁𝐲 (💝𝐍𝐎𝐍𝐃𝐈𝐍𝐈)(🌹𝐒𝐇𝐈𝐑𝐈𝐍) (😎𝐄𝐕𝐀𝐍) (💞𝐄𝐋𝐈𝐍𝐀) 😘💫`,
         attachment: diptoo
       },event.threadID, event.messageID);
     } catch (error) {
