@@ -1,7 +1,7 @@
 module.exports.config = {
   name: 'listbox',
   version: '1.0.0',
-  credits: 'manhIT',
+  credits: 'RAHAT',
   hasPermssion: 2,
   description: 'List thread bot participated',
   commandCategory: 'System',
@@ -71,7 +71,7 @@ module.exports.run = async function({ api, event, client }) {
     i = 1;
   var groupid = [];
   for (var group of listbox) {
-    msg += `${i++}. ${group.name}\n🧩TID: ${group.id}\n🐸Member: ${group.sotv}\n\n`;
+    msg += `${i++}. ${group.name}\n🐼TID: ${group.id}\nMember🦋: ${group.sotv}\n\n`;
     groupid.push(group.id);
   }
 
