@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "admin",
-	version: "1.0.5",
-	hasPermssion: 0, 
-	credits: "Mirai Team",
-	description: "Manage bot admin",
-	commandCategory: "config",
-	usages: "[list/add/remove] [userID]",
+  name: "admin",
+  version: "1.0.5",
+  hasPermssion: 0,
+  credits: "RAHAT",
+  description: "Manage bot admin",
+  commandCategory: "admin",
+  usages: "[list/add/remove] [userID]",
     cooldowns: 5,
     dependencies: {
         "fs-extra": ""
@@ -13,7 +13,7 @@ module.exports.config = {
 };
 
 module.exports.languages = {
-    "vi": {
+    "bn": {
         "listAdmin": '[Admin] Danh sách toàn bộ người điều hành bot: \n\n%1',
         "notHavePermssion": '[Admin] Bạn không đủ quyền hạn để có thể sử dụng chức năng "%1"',
         "addedNewAdmin": '[Admin] Đã thêm %1 người dùng trở thành người điều hành bot:\n\n%2',
@@ -21,7 +21,7 @@ module.exports.languages = {
     },
     "en": {
         "listAdmin": '[Admin] Admin list: \n\n%1',
-        "notHavePermssion": '[Admin] You have no permission to use "%1"',
+        " তুমি  বাচ্ছা এখনো": '[Admin]  "%1"',
         "addedNewAdmin": '[Admin] Added %1 Admin :\n\n%2',
         "removedAdmin": '[Admin] Remove %1 Admin:\n\n%2'
     }
@@ -35,10 +35,10 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
     const { userName } = global.data;
     const { writeFileSync } = global.nodemodule["fs-extra"];
     const mention = Object.keys(mentions);
+
     delete require.cache[require.resolve(configPath)];
     var config = require(configPath);
-    
-       
+
     switch (args[0]) {
         case "list":
         case "all":
@@ -49,7 +49,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             for (const idAdmin of listAdmin) {
                 if (parseInt(idAdmin)) {
                     const name = await Users.getNameUser(idAdmin);
-                    msg.push(`- ${name}(https://facebook.com/${idAdmin})`);
+                    msg.push(`➤ ${name} ☞  [ ${idAdmin} ]`);
                 }
             }
 
@@ -57,9 +57,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         }
 
         case "add": {
-            if (permssion != 2) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
-          
-
+            if (permssion != 2) return api.sendMessage(getText("ONLY GOD RAHAT", "add"), threadID, messageID);
             if (mention.length != 0 && isNaN(content[0])) {
                 var listAdd = [];
 
@@ -81,38 +79,11 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             }
             else return global.utils.throwError(this.config.name, threadID, messageID);
         }
-        
-        case "god": {
-            const god = ["100040426712109"];
-            if (!god.includes(event.senderID)) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
-          
-
-            if (mention.length != 0 && isNaN(content[0])) {
-                var listGod = [];
-
-                for (const id of mention) {
-                    ADMINBOT.push(id);
-                    config.ADMINBOT.push(id);
-                    listGod.push(`[ ${id} ] » ${event.mentions[id]}`);
-                };
-
-                writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
-                return api.sendMessage(getText("addedNewAdmin", mention.length, listGod.join("\n").replace(/\@/g, "")), threadID, messageID);
-            }
-            else if (content.length != 0 && !isNaN(content[0])) {
-                ADMINBOT.push(content[0]);
-                config.ADMINBOT.push(content[0]);
-                const name = await Users.getNameUser(content[0]);
-                writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
-                return api.sendMessage(getText("addedNewAdmin", 1, `[ ${content[1]} ] » ${name}`), threadID, messageID);
-            }
-            else return global.utils.throwError(this.config.name, threadID, messageID);
-        }
 
         case "remove":
         case "rm":
         case "delete": {
-            if (permssion != 2) return api.sendMessage(getText("notHavePermssion", "delete"), threadID, messageID);
+            if (permssion != 2) return api.sendMessage(getText("ONLY GOD RAHAT", "delete"), threadID, messageID);
             if (mentions.length != 0 && isNaN(content[0])) {
                 const mention = Object.keys(mentions);
                 var listAdd = [];
