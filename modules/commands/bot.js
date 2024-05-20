@@ -157,7 +157,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("Yes <3", threadID);
    };
 
-  if (event.body.indexOf("বোট") == 0 || (event.body.indexOf("বট") == 0)) {
+  if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
     var msg = {
       body: `🤖Dear,『${name}』\n\n💌${rand}`
     }
