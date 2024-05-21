@@ -28,7 +28,7 @@ dipto.startsWith('https://www.instagram.com/p/') || dipto.startsWith('https://pi
     api.sendMessage("please put a valid fb video link", event.threadID, event.messageID);
     return;
     }
-const aa = await axios.get(`https://noobs-api.onrender.com/dipto/alldl?url=${encodeURIComponent(dipto)}`);
+const aa = await axios.get(`https://noobs-api2.onrender.com/dipto/alldl?url=${encodeURIComponent(dipto)}`);
    const bb = aa.data;
    const shortUrl = await tinyurl.shorten(bb.result);
    const MSG = `✅ 🔗 Download Url: ${shortUrl}`;
