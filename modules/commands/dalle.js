@@ -19,7 +19,7 @@ module.exports.run = async function ({ api, event, args }) {
   }
     try {
       //const cookies = "cookies dew";
-const tl = ["1CItcHFFWEySt8J9vm9JrantUTi1Ur_SEao4gzLbmXbpTWmJBFHQ0LNlhxH7aJE15p69yEuQOk2uDKKiks299JuZ7j76FIHV-f3rWxnDvDxapYsHYHuY6cGvGZjN44r1a304wWABOWF_Lx2rjRgAv_tXLNCHu6dul3g8dBS76FM6DaMJQdAvW0BxsbXE_vd4i2LWCwvGD370sb7T1w4rSig"];
+const tl = ["1k0pg8NohKDzfKdGX3YVJZQuffPtNYald4c6MEKLxWuabjgrOpReW1pI7Tz_ETyOJFjTA163HbASbHc3cHB6fDR5bOegdUef7ODjbytHX8K8F0VAlsQ7NppjlNghdDZ5idlwLPzfUyklP_l1cjhx4avoz03Me9YQMisccA7jaNs89Zy4BhZEd_g2xM0J-2K9wur-BELrwov-VJ_hkW9o3rg"];
 const cookies = tl[Math.floor(Math.random() * tl.length)];
       const w = await api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐖𝐚𝐢𝐭 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐈𝐦𝐠𝐚𝐞\n\n𝐂𝐫𝐞𝐚𝐭𝐞 𝐁𝐲 𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊", event.threadID);
   
