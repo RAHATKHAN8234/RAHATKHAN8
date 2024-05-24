@@ -1,36 +1,24 @@
 const axios = require("axios");
-const { createReadStream, unlinkSync, writeFileSync } = require("fs-extra");
 
-async function getAvatarUrls(userIDs) {
-    let avatarURLs = [];
-  try {
-       for (let userID of userIDs) {
-const url = `https://graph.facebook.com/${userID}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
-        avatarURLs.push(url);
-    }
-    return avatarURLs;
-   } catch (error) {
-    return avatarURLs.push("https://i.ibb.co/qk0bnY8/363492156-824459359287620-3125820102191295474-n-png-nc-cat-1-ccb-1-7-nc-sid-5f2048-nc-eui2-Ae-HIhi-I.png");
-    }
-}
 module.exports = {
     config: {
         name: "gcimg",
+        aliases: ["gcimage", "grpimage"],
         version: "1.0",
-        credits: "RAHAT",
-        cooldowns: 5,
-        hasPermission: 0,
+        author: "RAHUL",
+        countDown: 5,
+        role: 0,
         description: "𝗚𝗲𝘁 𝗚𝗿𝗼𝘂𝗽 𝗜𝗺𝗮𝗴𝗲",
-        commandCategory: "𝗜𝗠𝗔𝗚𝗘",
-        usages: "{pn} --color [color] --bgcolor [color] --admincolor [color] --membercolor [color]"
+        category: "𝗜𝗠𝗔𝗚𝗘",
+        guide: "{pn} --color [color] --bgcolor [color] --admincolor [color] --membercolor [color]"
     },
 
-    run: async function ({ api, args, event }) {
+    onStart: async function ({ api, args, event, message }) {
         try {
-          let color = "red";
-          let bgColor = "https://i.ibb.co/0cKs9kf/1000009359.jpg"; 
-          let adminColor = "yellow"; 
-          let memberColor = "#00FFFF"; 
+            let color = "red";
+            let bgColor = ""; 
+            let adminColor = ""; 
+            let memberColor = "pink"; 
             for (let i = 0; i < args.length; i += 2) {
     switch (args[i]) {
         case "--color":
@@ -68,21 +56,32 @@ module.exports = {
                 var waitingMsg = await api.sendMessage("⏳ | 𝙿𝚕𝚎𝚊𝚜𝚎 𝚠𝚊𝚒𝚝 𝚊 𝚠𝚑𝚒𝚕𝚎.", event.threadID);
                 api.setMessageReaction("⏳", event.messageID, (err) => {}, true)
             }
-                const { data } = await axios.post('https://noobs-api.onrender.com/dipto/groupPhoto', data2);
-                const path = __dirname + "/cache/gcimg.png";
-                const imgData = (await axios.get(data.img, { responseType: "arraybuffer" })).data;
-                writeFileSync(path, Buffer.from(imgData, 'binary'));
+                const { data } = await axios.post(`https://noobs-api2.onrender.com/dipto/groupPhoto`, data2);
+
                 if(data.img){
                 api.setMessageReaction("✅", event.messageID, (err) => {}, true)
-                api.unsendMessage(waitingMsg.messageID);
-                api.sendMessage({
+                message.unsend(waitingMsg.messageID);
+                message.reply({
                   body: `𝙷𝚎𝚛𝚎 𝚒𝚜 𝚢𝚘𝚞𝚛 𝚐𝚛𝚘𝚞𝚙 𝚒𝚖𝚊𝚐𝚎 <😘`,
-                  attachment: createReadStream(path)
-            }, event.threadID, () => unlinkSync(path), event.messageID);
+                  attachment: await global.utils.getStreamFromURL(data.img)
+            });
                }
         } catch (error) {
             console.log(error);
-            api.sendMessage(`❌ | 𝙴𝚛𝚛𝚘𝚛: ${error.message}`);
+            message.reply(`❌ | 𝙴𝚛𝚛𝚘𝚛: ${error.message}`);
         };
     }
 };
+
+async function getAvatarUrls(userIDs) {
+    let avatarURLs = [];
+  try {
+       for (let userID of userIDs) {
+const url = `https://graph.facebook.com/${userID}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
+        avatarURLs.push(url);
+    }
+    return avatarURLs;
+   } catch (error) {
+    return avatarURLs.push("https://i.ibb.co/qk0bnY8/363492156-824459359287620-3125820102191295474-n-png-nc-cat-1-ccb-1-7-nc-sid-5f2048-nc-eui2-Ae-HIhi-I.png");
+    }
+}
