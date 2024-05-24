@@ -3,7 +3,7 @@ const axios = require("axios");
 module.exports = {
     config: {
         name: "gcimg",
-        aliases: ["gcimage", "grpimage"],
+        usages: ["gcimage", "grpimage"],
         version: "1.0",
         credits: "RAHAT"
         cooldowns: 5,
