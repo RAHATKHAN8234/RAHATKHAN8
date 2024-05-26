@@ -1,44 +1,87 @@
 module.exports.config = {
-    name: "adminonly",
-    version: "1.0",
+    name: "adminupdate",
+    version: "1.1.1",
     hasPermssion: 1,
     credits: "RAHAT",
-    description: "Admin only",
-    commandCategory: "Admin",
-    usages: "qtvonly",
-    cooldowns: 5,
-    dependencies: {
-        "fs-extra": ""
-    }
-};
-
-module.exports.onLoad = function() {
-    const { writeFileSync, existsSync } = require('fs-extra');
-    const { resolve } = require("path");
-    const path = resolve(__dirname, 'cache', 'data.json');
-    if (!existsSync(path)) {
-        const obj = {
-            adminbox: {}
-        };
-        writeFileSync(path, JSON.stringify(obj, null, 4));
-    } else {
-        const data = require(path);
-        if (!data.hasOwnProperty('adminbox')) data.adminbox = {};
-        writeFileSync(path, JSON.stringify(data, null, 4));
-    }
+    description: "Turn on/off anti-output",
+    commandCategory: "Nhóm",
+    usages: "",
+    cooldowns: 0
 }
-module.exports.run = async function ({ api, event, args }) {
-const { threadID, messageID, mentions } = event;
-
-        const { resolve } = require("path");
-        const pathData = resolve(__dirname, 'cache', 'data.json');
-        const database = require(pathData);
-        const { adminbox } = database;   
-        if (adminbox[threadID] == true) {
-            adminbox[threadID] = false;
-            api.sendMessage("» Successfully disabled admin and only mode (everyone can use bots)", threadID, messageID);
-        } else {
-            adminbox[threadID] = true;
-            api.sendMessage("» Successfully enabled admin only mode (only admin with admin of group can use bot)", threadID, messageID);
+module.exports.run = async function({
+    api: a,
+    event: e,
+    args: g,
+    Threads: T
+}) {
+    const {
+        threadID: t,
+        messageID: m,
+        senderID: s
+    } = e
+    let getDataThread = await T.getData(t) || {}
+    const {
+        data,
+        threadInfo
+    } = getDataThread
+    if (typeof data.threadUpdate == "undefined") {
+        data.threadUpdate = {
+            status: true,
+            send: true,
+            unsend: true,
+            timeout: 10,
+            storage: []
         }
+        await T.setData(t, {
+            data
+        });
+        await global.data.threadData.set(t, data)
+    }
+    var msg = `==== [ 𝗨𝗣𝗗𝗔𝗧𝗘 𝗡𝗛𝗢́𝗠 ] ====\n━━━━━━━━━━━━━━━━━━\n1. Group update notification(in progress ${data.threadUpdate.send == true ? "is on" : "in progress turn off"})\n2. On one's own unsend Group update notification(in progress ${data.threadUpdate.unsend == true ? "Is on" : "shutting down"})\n3. + seconds Unsend tb after the number of seconds you set, currently unsend later ${data.threadUpdate.timeout}s\n━━━━━━━━━━━━━━━━━━\n➝ Reply STT to make changes`
+    a.sendMessage(msg, t, (error, info) => {
+      global.client.handleReply.push({
+        name: this.config.name,
+        messageID: info.messageID,
+        author: s
+      })
+    }, m)
 }
+module.exports.handleReply = async function ({ api: a, event: e, handleReply: h, Threads: T }) {
+  const { threadID: t, messageID: m, senderID: s, body: y } = e
+  let getDataThread = await T.getData(t) || {}
+    const {
+        data,
+        threadInfo
+    } = getDataThread
+  var msg = ""
+  const arr = y.split(" ")
+  if (arr[0] == "1") {
+    const status = data.threadUpdate.send == true ? false : true
+    data.threadUpdate.send = status
+    await T.setData(t, {
+        data
+    });
+    await global.data.threadData.set(t, data)
+    msg = `➝ Already ${status == true ? "turn on" : "turn off"} Group update notification`
+    a.sendMessage(msg, t, m)
+  }
+  if (arr[0] == "2") {
+    const status = data.threadUpdate.unsend == true ? false : true
+    data.threadUpdate.unsend = status
+    await T.setData(t, {
+        data
+    });
+    await global.data.threadData.set(t, data)
+    msg = `➝ Already ${status == true ? "turn on" : "turn off"} Automatically unsend group update notifications`
+    a.sendMessage(msg, t, m)
+  }
+  if (arr[0] == "3") {
+    data.threadUpdate.timeout = parseInt(arr[1])
+    await T.setData(t, {
+        data
+    });
+    await global.data.threadData.set(t, data)
+    msg = `➝ The group update notification self-unsend time has been set ${arr[1]}s`
+    a.sendMessage(msg, t, m)
+      }
+} 
