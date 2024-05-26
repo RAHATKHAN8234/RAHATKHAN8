@@ -20,7 +20,7 @@ module.exports.handleReply = async function ({ api, event,handleReply}) {
   if (event.type == "message_reply") {
   const reply = event.body.toLowerCase();;
   if (isNaN(reply)) {
-    const response = await axios.get(`https://noobs-api.onrender.com/dipto/gemini2?text=${encodeURIComponent(reply)}&senderID=${uid}`)
+    const response = await axios.get(`noobs-api2.onrender.com/dipto/gemini2?text=${encodeURIComponent(reply)}&senderID=${uid}`)
        const ok = response.data.response;
     await api.sendMessage(ok ,event.threadID,(error, info) => {
   global.client.handleReply.push({
