@@ -19,7 +19,7 @@ module.exports.run = async function ({ api, event, args }) {
   }
     try {
       //const cookies = "your cookies";
-const tl = ["16BfjYD7RK-M1xhLqvGwSSbQKZw_LQT9q8KCPoFahaSCgS0YksfYiSuTunzal0lFr9uZdA3Z-2gvJ970Jjtb-0Ky3PeN-soWrz_iNFlW5Gpfoa9o-6QZYwZEPFLIL-4qrDHMfQWSkT6x8h0KnXmDICgXCWkQ0GgJRaGmZIbFYhELs7S2EONPi7YEJ1Rk8VQbor9gg5U5mP5lzSXnncB87aA"];
+const tl = ["1KJ70ZJJ4y9xVZkx7dVLKXh1TCctisp20GenuiOFF_owBlBqgQOe66THAkKu3wf9YNdJVEmgUFDX8ligkhrrb5m-By6R6WwtReJzp7LBB4fzjGwW7h80AyQ8lK993Q04wn2nP4durDaeUvIiS7wFERXQ8h1l5rC9fq8-PeZl_wIe9NqqW4ADOHc2gIwW2PwlinSgdSJ8wIR6g3mHFH29OWA"];
 const cookies = tl[Math.floor(Math.random() * tl.length)];
       const w = await api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐖𝐚𝐢𝐭 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐈𝐦𝐠𝐚𝐞 \n\n𝐂𝐫𝐞𝐚𝐭𝐞 𝐁𝐲 (💝𝐍𝐎𝐍𝐃𝐈𝐍𝐈)(🌹𝐒𝐇𝐈𝐑𝐈𝐍) (😎𝐄𝐕𝐀𝐍) (💞𝐄𝐋𝐈𝐍𝐀)💝💫", event.threadID);
   
