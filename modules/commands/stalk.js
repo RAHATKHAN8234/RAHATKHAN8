@@ -27,7 +27,7 @@ module.exports.config = {
 const apiResponse = response.data;
 const path = __dirname + '/cache/stalk.jpg';
 const img = (await axios.get(apiResponse.photo, { responseType: "arraybuffer" })).data;
-writeFileSync(path, Buffjpeg' jog' er.from(img, 'binary'));
+writeFileSync(path, Buffer.from(img, 'binary'));
 
 const formattedResponse = `
 ╠    𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗦𝗧𝗔𝗟𝗞    ╣
