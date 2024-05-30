@@ -51,4 +51,4 @@ module.exports = {
       await message.reply("❌ | Please reply with an image to perform OCR.");
     }
   },
-};
+}; 
