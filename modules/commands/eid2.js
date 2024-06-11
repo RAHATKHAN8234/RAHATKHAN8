@@ -9,7 +9,7 @@ module.exports.config = {
 }
 
 module.exports.run = function ({ event, api }) {
-    const u = Date.parse("June 28, 2024 10:00:00") - Date.parse(new Date());
+    const u = Date.parse("June 17, 2024 10:00:00") - Date.parse(new Date());
     const saconds = Math.floor( (u/1000) % 60 );
     const menutes = Math.floor( (u/1000/60) % 60 );
     const huurs = Math.floor( (u/(1000*60*60)) % 24 );
