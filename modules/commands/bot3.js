@@ -6,7 +6,7 @@ const fs = require("fs");
 
 module.exports.config = {
 
-  name: "teach",
+  name: "teachv2",
 
   version: "1.0.0",
 
