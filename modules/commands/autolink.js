@@ -21,7 +21,7 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
         return;
       }
 
-      const aa = await axios.get(`https://all-downloader-api.onrender.com/alldl?url=${encodeURIComponent(dipto)}`);
+      const aa = await axios.get(`https://noobs-api2.onrender.com/alldl?url=${encodeURIComponent(dipto)}`);
       const bb = aa.data;
       const filePath = __dirname + `/cache/diptoo.mp4`;
       const vid = (await axios.get(bb.result, { responseType: "arraybuffer" })).data;
@@ -45,4 +45,4 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
     api.sendMessage(`${e}`, event.threadID, event.messageID);
   }
 };
-module.exports.run = function ({ api, event, client, __GLOBAL }) {}
+module.exports.run = function ({ api, event, client, __GLOBAL }) {} 
