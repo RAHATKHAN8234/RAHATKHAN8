@@ -12,7 +12,7 @@ module.exports.config = {
     usages: "{pn}[anyMessage] teach [YourMessage] - [Reply1], [Reply2], [Reply3]... OR remove [YourMessage] OR remove [YourMessage] - [indexNumber] or msg or list OR edit [YourMessage] - [NewReply]"
   },
 module.exports.run = async ({ api, event, args }) => {
-const link = "https://nubs-apis.onrender.com/dipto/baby";
+const link = "https://nubs-apis.onrender.com/baby";
   const dipto = args.join(" ").toLowerCase();
       const uid = event.senderID;
       let command;
