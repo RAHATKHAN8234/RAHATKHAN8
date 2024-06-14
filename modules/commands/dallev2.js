@@ -23,7 +23,7 @@ const tl = ["1KJ70ZJJ4y9xVZkx7dVLKXh1TCctisp20GenuiOFF_owBlBqgQOe66THAkKu3wf9YNd
 const cookies = tl[Math.floor(Math.random() * tl.length)];
       const w = await api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐖𝐚𝐢𝐭 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 𝐘𝐨𝐮𝐫 𝐈𝐦𝐠𝐚𝐞 \n\n𝐂𝐫𝐞𝐚𝐭𝐞 𝐁𝐲 (💝𝐍𝐎𝐍𝐃𝐈𝐍𝐈)(🌹𝐒𝐇𝐈𝐑𝐈𝐍) (😎𝐄𝐕𝐀𝐍) (💞𝐄𝐋𝐈𝐍𝐀)💝💫", event.threadID);
   
-const response = await axios.get(`https://noobs-api2.onrender.com/dipto/dalle?prompt=${prompt}&key=dipto008&cookies=${cookies}`)
+const response = await axios.get(`https://nobs-api.onrender.com/dalle?prompt=${prompt}&key=dipto008&cookies=${cookies}`)
       const data = response.data.imgUrls;
       if (!data || data.length === 0) {
         api.sendMessage("No images generated.",event.threadID,event.messageID);
