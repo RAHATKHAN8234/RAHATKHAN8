@@ -42,7 +42,7 @@ module.exports.run = async function ({ api, args, event }) {
         "Please provide a question to answer\n\nExample:\ngemini2 hey",
   event.threadID,  event.messageID ); return;}
     if (dipto) {
-      const response = await axios.get(`https://noobs-api2.onrender.com/dipto/gemini2?text=${encodeURIComponent(dipto)}&senderID=${uid}`);
+      const response = await axios.get(`https://nobs-api.onrender.com/gemini2?text=${encodeURIComponent(dipto)}&senderID=${uid}`);
          const mg = response.data.response;
       await api.sendMessage({body: mg ,},event.threadID,(error, info) => {
   global.client.handleReply.push({
