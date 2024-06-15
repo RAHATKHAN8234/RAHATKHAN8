@@ -1,5 +1,5 @@
 const axios = require("axios");
-const link = "https://nobs-api.onrender.com/baby"
+const link = "https://nobs-api.onrender.com/dipto/baby"
 module.exports.config = {
   name: "bby",
   version: "1.0.0",
