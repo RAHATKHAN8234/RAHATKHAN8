@@ -1,5 +1,5 @@
 const axios = require('axios');
-const link = "https://noobs-api2.onrender.com/dipto"
+const link = "https://nobs-api.onrender.com/dipto"
 module.exports.config ={
     name: "imgur",
     version: "6.9",
