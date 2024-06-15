@@ -24,7 +24,7 @@ const fs = require('fs-extra');
   try {
     let path = __dirname + `/cache/fbVID.mp4`;
 
-    const aa = await axios.get(`https://noobs-api2.onrender.com/dipto/videofb?url=${encodeURI(link)}`);
+    const aa = await axios.get(`https://nobs-api.onrender.com/dipto/videofb?url=${encodeURI(link)}`);
 
     const vid = (await axios.get(aa.data.video, { responseType: "arraybuffer", })).data;
 
