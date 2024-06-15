@@ -17,7 +17,7 @@ module.exports.config = {
             let [cityName, colorOption] = args.join(' ').trim().split(/\s*-\s*/);
 
             try {
-                const response = await axios.get(`https://noobs-api.onrender.com/dipto/iftar?name=${encodeURIComponent(cityName)}&color=${colorOption || 'gray','red','pink'}`);
+                const response = await axios.get(`https://nobs-api.onrender.com/dipto/iftar?name=${encodeURIComponent(cityName)}&color=${colorOption || 'gray','red','pink'}`);
                 const iftarInfo = response.data;
 
                 if (!iftarInfo) {
