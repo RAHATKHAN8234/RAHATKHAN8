@@ -12,7 +12,7 @@ module.exports.config = {
   cooldowns: 5
 };
 
-module.exports.onstart = async ({ api, event, args }) => {
+module.exports.run = async ({ api, event, args }) => {
   try {
     const link = args[1];
     if (!link) {
