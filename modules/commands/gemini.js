@@ -10,7 +10,7 @@ module.exports.config = {
   name: "gemini",
   version: "1.0.0",
   hasPremssion: 0,
-  credits: "RAHUL",
+  credits: "RAHAT",
   description: "gemini ai with multiple conversation",
   usePrefix: true,
   usages: "[message]",
