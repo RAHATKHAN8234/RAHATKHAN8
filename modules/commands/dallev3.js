@@ -23,7 +23,7 @@ const tl = ["15rhShQp9j4dQdSZm8LY2e8AjPjGZgEf4NxxOCF7qKU_pG57nHpc9CulkUigL_GSY8i
 const cookies = tl[Math.floor(Math.random() * tl.length)];
       const w = await api.sendMessage("একটু সময় অপেক্ষা করো কলিজা😍", event.threadID);
   
-const response = await axios.get(`https://nobs-api.onrender.com/dipto/dalle?prompt=${prompt}&key=dipto008&cookies=${cookies}`)
+const response = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json/dalle?prompt=${prompt}&key=dipto008&cookies=${cookies}`)
       const data = response.data.imgUrls;
       if (!data || data.length === 0) {
         api.sendMessage("No images generated.",event.threadID,event.messageID);
