@@ -10,7 +10,7 @@ module.exports.config = {
   name: "gemini",
   version: "1.0",
   hasPermssion: 0,
-  credits: "RAHUL",
+  credits: "Dipto",
   description: "gemeini ai",
   usePrefix: true,
   commandCategory: "google",
