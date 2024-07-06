@@ -25,7 +25,7 @@ module.exports = {
     config: {
         name: "gcimg",
         version: "1.0",
-        credits: "RAHUL",
+        credits: "RAHAT",
         cooldowns: 5,
         hasPermission: 0,
         description: "𝗚𝗲𝘁 𝗚𝗿𝗼𝘂𝗽 𝗜𝗺𝗮𝗴𝗲",
