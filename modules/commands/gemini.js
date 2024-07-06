@@ -10,14 +10,14 @@ module.exports.config = {
   name: "gemini",
   version: "1.0",
   hasPermssion: 0,
-  credits: "Dipto",
+  credits: "RAHAT",
   description: "gemeini ai",
   usePrefix: true,
   commandCategory: "google",
   cooldowns: 5,
 };
 
-module.exports.run = async function ({ api, args, event }) => {
+module.exports.run = async ({ api, args, event }) => {
     const prompt = args.join(" ");
     //---- Image Reply -----//
     if (event.type === "message_reply") {
@@ -56,5 +56,4 @@ module.exports.run = async function ({ api, args, event }) => {
         );
       }
     }
-  },
-};
+  }
