@@ -22,7 +22,7 @@ const link = [
 ];
 
 module.exports.config = {
-  name: "gf",
+  name: "girlfriend",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺",
