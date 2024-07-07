@@ -13,7 +13,7 @@ module.exports = {
   config: {
     name: "alldl",
     version: "1.0.1",
-    credits: "RAHUL",
+    credits: "RAHAT",
     cooldowns: 6,
     hasPermission: 0,
     description:
