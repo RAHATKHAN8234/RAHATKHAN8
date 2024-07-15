@@ -5,7 +5,7 @@ module.exports.config = {
   credits: 'Islamick Chat',
   useprefix:true,
   description: 'Ajan Time auto sand ajan video',
-  Commandcategory: 'ajan',
+  commandcategory: 'ajan',
   usages: '[]',
   cooldowns: 3
 };
