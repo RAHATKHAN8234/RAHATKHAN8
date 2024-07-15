@@ -1,11 +1,10 @@
 module.exports.config = {
   name: 'ajan',
   version: '10.02',
-  hasPermssion: 2,
+hassPermssion: 2,
   credits: 'RAHAT',
-  useprefix:true,
   description: 'Ajan Time auto sand ajan video',
-  Commandcategory: 'ajan',
+ Commandcategory : 'ajan',
   usages: '[]',
   cooldowns: 3
 };
