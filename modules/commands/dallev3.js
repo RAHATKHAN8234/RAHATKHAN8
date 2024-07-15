@@ -33,7 +33,7 @@ module.exports.run = async function ({ api, event, args }) {
   }
   try {
     //const cookies = "cookies here (_U value)";
-    const tl = ["1_fIyvMBd4AdvnAatXwtpJ6xK5wlhcmUdP_gDCBwjMkBhVHTm3dsRCz6fHkUDoWn3vycxnLsoo6NsnzWR1hawF78Ldncg-ACPgwe-ypoRfT1HYcdby-7DhG3XorB6O2WRCNxoimpUteOHvsJ-a0d3xGWIXw825Og4MG0AEiVB3ykn6GEeq4U__GnaqW4ih9qdOcU_-h2DPRmLCcj_0faO9Q", "1_fIyvMBd4AdvnAatXwtpJ6xK5wlhcmUdP_gDCBwjMkBhVHTm3dsRCz6fHkUDoWn3vycxnLsoo6NsnzWR1hawF78Ldncg-ACPgwe-ypoRfT1HYcdby-7DhG3XorB6O2WRCNxoimpUteOHvsJ-a0d3xGWIXw825Og4MG0AEiVB3ykn6GEeq4U__GnaqW4ih9qdOcU_-h2DPRmLCcj_0faO9Q"];
+    const tl = ["1VMpvZ4SOh0xCZAzYeNHZ1VjzibhKrJdE13PwxgRcCHBOD_nLu9phHAn34l0Q8HRbJwjGZIYya9KZNSkdlHCtkRKm1pE--FtufkyxkPFw6OX8EJDdp1LSyBF8hyG8pxnaua5GrRuSQxXcFZdRFJgj3-yAtfNv0dFz_dhM2DZPJdGdCJyBkLp3r543_Qa8xT4PF4UC-u-3iOvD7R8mbAnzvA", "1_fIyvMBd4AdvnAatXwtpJ6xK5wlhcmUdP_gDCBwjMkBhVHTm3dsRCz6fHkUDoWn3vycxnLsoo6NsnzWR1hawF78Ldncg-ACPgwe-ypoRfT1HYcdby-7DhG3XorB6O2WRCNxoimpUteOHvsJ-a0d3xGWIXw825Og4MG0AEiVB3ykn6GEeq4U__GnaqW4ih9qdOcU_-h2DPRmLCcj_0faO9Q"];
     const cookies = tl[Math.floor(Math.random() * tl.length)];
     const w = await api.sendMessage("𝐖𝐚𝐢𝐭 𝐤𝐨𝐫𝐨 𝐛𝐚𝐛𝐲 < \n\n𝐀𝐩𝐢 𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊😘", event.threadID);
 
