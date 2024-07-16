@@ -57,4 +57,4 @@ module.exports.onLoad = async ({ api }) => {
   checkTimeAndSendMessage();
 };
 
-module.exports🥰.run= ({}) => {};
+module.exports.run= ({}) => {};
