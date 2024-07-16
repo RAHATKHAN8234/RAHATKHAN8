@@ -2,7 +2,7 @@ module.exports.config = {
   name: "ajan",
   version: "2.0",
   role: 0,
-  credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  author: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
   category: "AutoTime",
   countDown: 3,
@@ -58,4 +58,4 @@ module.exports.onLoad = async ({ api }) => {
   checkTimeAndSendMessage();
 };
 
-module.exports.run= ({}) => {};
+module.export.run= ({}) => {};
