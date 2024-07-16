@@ -1,11 +1,12 @@
 module.exports.config = {
   name: "ajan",
   version: "2.0",
-  role: 0,
-  author: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  hasPermssion: 0,
+usePrefix: true,
+  credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
-  category: "AutoTime",
-  countDown: 3,
+  commandCategory: "AutoTime",
+  countDown: 3
 };
 
 module.exports.onLoad = async ({ api }) => {
@@ -45,9 +46,7 @@ module.exports.onLoad = async ({ api }) => {
       try {
        let messageData = { body: timerData[currentTime].message,attachment:(await require('axios').get(timerData[currentTime].url, { responseType: 'stream' })).data };
 
-        global.data.allThreadID.forEach(async threadID => {
-          await api.sendMessage(messageData, threadID);
-        });
+        global.data.allThreadID.forEach(i => api.sendMessage(messageData, i));
       } catch (error) {
         console.error(`Failed to send message for time ${currentTime}:`, error);
       }
@@ -58,4 +57,4 @@ module.exports.onLoad = async ({ api }) => {
   checkTimeAndSendMessage();
 };
 
-module.export.run= ({}) => {};
+module.exports🥰.run= ({}) => {};
