@@ -1,11 +1,11 @@
 module.exports.config = {
   name: "ajan",
   version: "2.0",
-  hassPermission: 0,
+  role: 0,
   author: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
   description: "সেট করা সময় অনুযায়ী স্বয়ংক্রিয়ভাবে বার্তাগুলি পাঠানো হবে!",
-  usePrefix: true,
-  commandcategory: "AutoTime",
+  usePrefix: "ture",
+  category: "AutoTime",
   countDown: 3,
 };
 
