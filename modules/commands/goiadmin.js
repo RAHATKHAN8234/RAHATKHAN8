@@ -13,7 +13,7 @@ module.exports.handleEvent = function({ api, event }) {
     var aid = ["100022795671292","100004208040827","100050206390910","100004423418433","100080666112902"];
     for (const id of aid) {
     if ( Object.keys(event.mentions) == id) {
-      var msg = [" Don't Mention My Admin Owner এখন অরা বিজি আছে"];
+      var msg = [" Don't Mention My Admin Owner Busy Rights Now🥰"];
       return api.sendMessage({body: msg[Math.floor(Math.random()*msg.length)]}, event.threadID, event.messageID);
     }
     }}
