@@ -9,7 +9,7 @@ module.exports = {
   config: {
     name: "music",
     version: "2.0.0",
-    credits: "Khan Rahul RK",
+    credits: "Khan Rahul RK💔",
     countDown: 5,
     hasPermssion: 0,
     prefix: true,
@@ -53,7 +53,7 @@ thumbnails.push(dipto(info.thumbnail,'photo.jpg'));
       body: msg+ "Reply to this message with a number want to listen",
       attachment: await Promise.all(thumbnails)
     },event.threadID, (err, info) => {
-global.client.handleEvent.push({
+global.client.handleReply.push({
         name:'sing',
         messageID: info.messageID,
         author: event.senderID,
