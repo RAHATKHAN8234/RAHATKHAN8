@@ -9,7 +9,7 @@ module.exports = {
   config: {
     name: "music",
     version: "2.0.0",
-    credits: "RAHAT",
+    credits: "Khan Rahul RK",
     countDown: 5,
     hasPermssion: 0,
     prefix: true,
