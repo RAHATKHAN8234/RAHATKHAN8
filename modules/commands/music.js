@@ -1,8 +1,6 @@
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 const { resolve } = require('path');
-const moment = require("moment-timezone");
-  var gio = moment.tz("Asia/Dhaka").format("HH:mm:ss");
 async function downloadMusicFromYoutube(link, path) {
   var timestart = Date.now();
   if(!link) return 'Thiếu link'
@@ -14,17 +12,17 @@ async function downloadMusicFromYoutube(link, path) {
   });
     ytdl(link, {
             filter: format =>
-                format.quality == 'tiny' && format.audioBitrate == 128 && format.hasAudio == true
+                format.quality == 'tiny' && format.audioBitrate == 48 && format.hasAudio == true
         }).pipe(fs.createWriteStream(path))
         .on("close", async () => {
             var data = await ytdl.getInfo(link)
             var result = {
                 title: data.videoDetails.title,
                 dur: Number(data.videoDetails.lengthSeconds),
+              publishDate:
+data.videoDetails.publishDate,                    
                 viewCount: data.videoDetails.viewCount,
                 likes: data.videoDetails.likes,
-                uploadDate: data.videoDetails.uploadDate,
-                sub: data.videoDetails.author.subscriber_count,
                 author: data.videoDetails.author.name,
                 timestart: timestart
             }
@@ -33,31 +31,30 @@ async function downloadMusicFromYoutube(link, path) {
   return returnPromise
 }
 module.exports.config = {
-    name: "music",
+    name: "song",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "RAHA",
+    credits: "RAHAT",
     description: "Play music via YouTube link or search keyword",
     commandCategory: "music",
     usages: "[searchMusic]",
-    cooldowns: 10
-}
+    cooldowns: 0
+};
 
 module.exports.handleReply = async function ({ api, event, handleReply }) {
-    const moment = require("moment-timezone");
-    const time = moment.tz("Asia/Kolkata").format("HH:mm:ss");
     const axios = require('axios')
     const { createReadStream, unlinkSync, statSync } = require("fs-extra")
     try {
-        var path = `${__dirname}/cache/sing-${event.senderID}.mp3`
+        var path = `${__dirname}/cache/1.mp3`
         var data = await downloadMusicFromYoutube('https://www.youtube.com/watch?v=' + handleReply.link[event.body -1], path);
-        if (fs.statSync(path).size > 26214400) return api.sendMessage('Baby 20Mb se jyada hai isme ,koi aur try kro!', event.threadID, () => fs.unlinkSync(path), event.messageID);
+        if (fs.statSync(path).size > 26214400) return api.sendMessage('The file cannot be sent because it is larger than 25MB.', event.threadID, () => fs.unlinkSync(path), event.messageID);
         api.unsendMessage(handleReply.messageID)
         return api.sendMessage({ 
-            body: `🎶=====「 𝐌𝐔𝐒𝐈𝐂 」=====️🎶\n━━━━━━━━━━━━━━\n📌 → 𝗧𝗶𝘁𝗹𝗲: ${data.title} ( ${this.convertHMS(data.dur)} )\n📆 → 𝗟𝗮𝘂𝗻𝗰𝗵 𝗗𝗮𝘁𝗲 ✔️: ${data.uploadDate}\n📻 → 𝗖𝗵𝗮𝗻𝗻𝗲𝗹: ${data.author} ( ${data.sub} )\n👀 → 𝗩𝗶𝗲𝘄𝘀 𝗥𝗲𝗮𝗹𝘁𝗶𝗺𝗲: ${data.viewCount} 𝘃𝗶𝗲𝘄\n❤️ → 𝗟𝗶𝗸𝗲𝘀 𝗥𝗲𝗮𝗹𝘁𝗶𝗺𝗲: ${data.likes}\n🔗 →  𝗟𝗶𝗻𝗸 𝗬𝗧: https://www.y2mate.com/youtube/${handleReply.link[event.body - 1]}\n⏳ → 𝗛𝗲𝗿𝗲 𝗶𝘀 𝗬𝗼𝘂𝗿 𝗠𝘂𝘀𝗶𝗰 🥰: ${Math.floor((Date.now()- data.timestart)/1000)}\n ❤️𝗣𝗹𝗲𝗮𝘀𝗲 𝗪𝗮𝗶𝘁 150 𝗦𝗲𝗰(s) 𝗙𝗼𝗿 𝗡𝗲𝘅𝘁 𝗦𝗼𝗻𝗴 \n 𝗘𝗻𝗷𝗼𝘆 𝗧𝗵𝗲 𝗠𝘂𝘀𝗶𝗰 🥰\n======= [ ${time} ] =======`,
+		body: `====『 𝗠𝗨𝗦𝗜𝗖 』====
+[🎼] ➠ 𝐓𝐢𝐭𝐥𝐞: ${data.title}\n[📺] ➠ 𝘼𝙪𝙩𝙝𝙤𝙧: ${data.author}\n[⏰] ➠ 𝙏𝙞𝙢𝙚: ${this.convertHMS(data.dur)}\n[👀] ➠ 𝙑𝙞𝙚𝙬𝙨: ${data.viewCount}\n[💞] ➠ 𝙇𝙞𝙠𝙚𝙨: ${data.likes}\n 𝙋𝙪𝙗𝙡𝙞𝙨𝙝 𝘿𝙖𝙩𝙚: ${data.publishDate}\n[⏳] ➠ 𝙋𝙧𝙤𝙘𝙘𝙚𝙨𝙨𝙞𝙣𝙜 𝙏𝙞𝙢𝙚: ${Math.floor((Date.now()- data.timestart)/1000)} second\n📺====『 𝗠𝗨𝗦𝗜𝗖 』====📺`,
             attachment: fs.createReadStream(path)}, event.threadID, ()=> fs.unlinkSync(path), 
          event.messageID)
-
+            
     }
     catch (e) { return console.log(e) }
 }
@@ -72,57 +69,37 @@ module.exports.convertHMS = function(value) {
     return (hours != '00' ? hours +':': '') + minutes+':'+seconds;
 }
 module.exports.run = async function ({ api, event, args }) {
-  let axios = require('axios');
-    if (args.length == 0 || !args) return api.sendMessage('» Tootiya ho ka be song ka nam likh le', event.threadID, event.messageID);
+    if (args.length == 0 || !args) return api.sendMessage('» Tutte kahe ke , song ka naam kon likhega!', event.threadID, event.messageID);
     const keywordSearch = args.join(" ");
-    var path = `${__dirname}/cache/sing-${event.senderID}.mp3`
+    var path = `${__dirname}/cache/1.mp3`
     if (fs.existsSync(path)) { 
         fs.unlinkSync(path)
     }
     if (args.join(" ").indexOf("https://") == 0) {
         try {
             var data = await downloadMusicFromYoutube(args.join(" "), path);
-            if (fs.statSync(path).size > 2621440000) return api.sendMessage('Unable to record file with time since 01:10:10 please select file without sound', event.threadID, () => fs.unlinkSync(path), event.messageID);
+            if (fs.statSync(path).size > 26214400) return api.sendMessage(' 25MB se jyada hai send ni hoga.', event.threadID, () => fs.unlinkSync(path), event.messageID);
             return api.sendMessage({ 
-                body: `🎶=====「 𝐌𝐔𝐒𝐈𝐂 」=====️🎶\n━━━━━━━━━━━━━━\n📌 → 𝗧𝗶𝘁𝗹𝗲: ${data.title} ( ${this.convertHMS(data.dur)} )\n📆 → এখুনি: ${data.uploadDate}\n📻 → 𝗖𝗵𝗮𝗻𝗻𝗲𝗹: ${data.author} ( ${data.sub} )\n👀 → লুট দেখুন: ${data.viewCount} 𝘃𝗶𝗲𝘄\n❤️ → লুট পছন্দ করে: ${data.likes}\n⏳ → সময় চলে যায়: ${Math.floor((Date.now()- data.timestart)/1000)} জুতা\n🔗 →  𝗟𝗶𝗻𝗸 এই: https://www.y2meta.com/vi/youtube/${handleReply.link[event.body - 1]}\n======= [ ${time} ] =======`,
+                body: `➠Title: ${data.title}\n➠Name Channel: ${data.author}\n➠Time: ${this.convertHMS(data.dur)}\n➠View: ${data.viewCount}\n➠Likes: ${data.likes}\n➠Processing time: ${Math.floor((Date.now()- data.timestart)/1000)} second\n💿====𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊====💿`,
                 attachment: fs.createReadStream(path)}, event.threadID, ()=> fs.unlinkSync(path), 
             event.messageID)
-
+            
         }
         catch (e) { return console.log(e) }
     } else {
           try {
             var link = [],
                 msg = "",
-                num = 0,
-                numb = 0;
-            var imgthumnail = []
+                num = 0
             const Youtube = require('youtube-search-api');
             var data = (await Youtube.GetListByKeyword(keywordSearch, false,6)).items;
             for (let value of data) {
               link.push(value.id);
-              let folderthumnail = __dirname + `/cache/${numb+=1}.png`;
-                let linkthumnail = `https://img.youtube.com/vi/${value.id}/hqdefault.jpg`;
-                let getthumnail = (await axios.get(`${linkthumnail}`, {
-                    responseType: 'arraybuffer'
-                })).data;
-                  let datac = (await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${value.id}&key=AIzaSyANZ2iLlzjDztWXgbCgL8Oeimn3i3qd0bE`)).data;
-                     fs.writeFileSync(folderthumnail, Buffer.from(getthumnail, 'utf-8'));
-              imgthumnail.push(fs.createReadStream(__dirname + `/cache/${numb}.png`));
-              let channel = datac.items[0].snippet.channelTitle;
               num = num+=1
-  if (num == 1) var num1 = "𝟙. "
-  if (num == 2) var num1 = "𝟚. "
-  if (num == 3) var num1 = "𝟛. "
-  if (num == 4) var num1 = "𝟜. "
-  if (num == 5) var num1 = "𝟝. "
-  if (num == 6) var num1 = "𝟞. "
-
-              msg += (`${num1} - ${value.title} ( ${value.length.simpleText} )\n📻 → 𝗖𝗵𝗮𝗻𝗻𝗲𝗹: ${channel}\n━━━━━━━━━━━━━━\n`);
+              msg += (`${num} - ${value.title} (${value.length.simpleText})\n\n`);
             }
-            var body = `»🔎  𝐇𝐢 ${link.length} 𝐈𝐭𝐧𝐞 𝐒𝐨𝐧𝐠 𝐘𝐨𝐮𝐭𝐮𝐛𝐞 𝐒𝐞 𝐌𝐮𝐣𝐡𝐞 𝐌𝐢𝐥𝐞\n━━━━━━━━━━━━━━\n${msg}» 𝐈𝐧𝐦𝐞 𝐬𝐞 𝐊𝐨𝐢 𝐛𝐡𝐢 𝐄𝐤 𝐌𝐮𝐬𝐢𝐜 𝐂𝐡𝐮𝐧 𝐥𝐞 𝐀𝐠𝐚𝐫 𝐖𝐨 25𝐦𝐛 𝐒𝐞 𝐊𝐚𝐦 𝐊𝐚 𝐇𝐮𝐚 𝐓𝐨𝐡 𝐚𝐩𝐤𝐨 𝐌𝐢𝐥 𝐉𝐚𝐲𝐞𝐠𝐚 \n𝐂𝐫𝐞𝐚𝐭𝐞 𝐁𝐲 𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊`
+            var body = `»🔎I🌸have🤔 ${link.length} results that match your search keywords:\n\n${msg}» Please reply, select one of the above searches🤷‍♂️😒jldi reply kr or bhi kam h 🤧`
             return api.sendMessage({
-              attachment: imgthumnail,
               body: body
             }, event.threadID, (error, info) => global.client.handleReply.push({
               type: 'reply',
@@ -132,7 +109,7 @@ module.exports.run = async function ({ api, event, args }) {
               link
             }), event.messageID);
           } catch(e) {
-            return api.sendMessage('Erorr !Try +Song!\n' + e, event.threadID, event.messageID);
+            return api.sendMessage('Erorr 🗡 please try + Music !\n' + e, event.threadID, event.messageID);
         }
     }
-    }
+                             }
