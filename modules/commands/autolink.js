@@ -37,7 +37,8 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
       dipto.startsWith("https://youtu.be/") ||
       dipto.startsWith("https://www.instagram.com/p/") ||
       dipto.startsWith("https://www.capcut.com/t/") ||
-      dipto.startsWith("https://youtube.com/")
+      dipto.startsWith("https://youtube.com/"
+      dipto.startsWith("https://www.threads.net/")
     ) {
       api.sendMessage("", event.threadID, event.messageID);
       if (!dipto) {
