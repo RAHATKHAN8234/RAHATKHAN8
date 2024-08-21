@@ -9,14 +9,16 @@ const baseApiUrl = async () => {
 };
 
 module.exports.config = {
-  name: "autodl",
+  name: "autolink",
   version: "1.0.",
   hasPermssion: 0,
-  credits: "RAHUL",
+  credits: "RAHAT",
   description: "Fb Vid Downloader",
   commandCategory: "other",
-  usages: "fb video link",
+  category: "others",
+  usags: "fb video link",
   usePrefix: true,
+  prefix: true,
   cooldowns: 2,
   dependencies: {
     axios: "",
@@ -33,12 +35,13 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
       dipto.startsWith("https://vm.tiktok.com") ||
       dipto.startsWith("https://www.facebook.com") ||
       dipto.startsWith("https://fb.watch") ||
+      dipto.startsWith("https://www.threads.net/") ||
+ dipto.startsWith("https://www.capcut.com/t/") ||
       dipto.startsWith("https://www.instagram.com/") ||
       dipto.startsWith("https://youtu.be/") ||
       dipto.startsWith("https://www.instagram.com/p/") ||
-      dipto.startsWith("https://www.capcut.com/t/") ||
-      dipto.startsWith("https://youtube.com/"
-      dipto.startsWith("https://www.threads.net/")
+      dipto.startsWith("https://pin.it/") ||
+      dipto.startsWith("https://youtube.com/")
     ) {
       api.sendMessage("", event.threadID, event.messageID);
       if (!dipto) {
