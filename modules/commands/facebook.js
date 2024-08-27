@@ -1,8 +1,8 @@
 module.exports.config = {
-    name: "fbget",
+    name: "facebook",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "Zera",
+    credits: "RAHAT",
     description: "Download video or record from fb",
   commandCategory: "utilities",
   usages: "audio/video [link]",
