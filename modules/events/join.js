@@ -31,7 +31,7 @@ module.exports.run = async function({ api, event }) {
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     api.changeNickname(`{ ${global.config.PREFIX} } × ${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
     const fs = require("fs");
-    return api.sendMessage("চলে এসছি আমি সবাইকে আন্দদ দেবার জন্য কেমন আছো সবাই", event.threadID, () => api.sendMessage({body:`➤⃚💕আসালামু আলাইকুম ⑅⃝✺❥᭄♥<<<<<------------------------------>>>>>  
+    return api.sendMessage("আসলাম আলাইকুম আমি আপনাদের গ্রুপ চলে আসছি সবাই কে মজা দিবার জন্য 😍কেমন আছেন সবাই", event.threadID, () => api.sendMessage({body:`➤⃚💕আসালামু আলাইকুম ⑅⃝✺❥᭄♥<<<<<------------------------------>>>>>  
 TO VIEW ANY COMMAND
 \n\nUse ${global.config.PREFIX}help to see commands.\n\nexample :\n${global.config.PREFIX}সূরা (text)\n${global.config.PREFIX}Rahat (photo)\n${global.config.PREFIX}help2 commands)\n${global.config.PREFIX}Owner (Owner information)
 <<<<<------------------------------>>>>>ᴋʜᴀɴ ʀᴀʜᴜʟ ʀᴋ`, attachment: fs.createReadStream(__dirname + "/cache/avt.png")} ,threadID));
