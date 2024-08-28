@@ -1,4 +1,3 @@
-Command executed successfully:
 module.exports = {
 	config: {
 		name: "tagv2 all",
