@@ -31,12 +31,12 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
   let dipto = event.body ? event.body : "";
   try {
     if (
-      dipto.startsWith("https://www.tiktok.com/t/") ||
+      dipto.startsWith("https://vt.tiktok.com") ||
       dipto.startsWith("https://vm.tiktok.com") ||
       dipto.startsWith("https://www.facebook.com") ||
       dipto.startsWith("https://fb.watch") ||
-      dipto.startsWith("https://www.threads.net/") ||
-      dipto.startsWith("https://www.capcut.com/t/") ||
+      dipto.startsWith("https://www.tiktok.com/t/") ||
+ dipto.startsWith("https://www.capcut.com/t/") ||
       dipto.startsWith("https://www.instagram.com/") ||
       dipto.startsWith("https://youtu.be/") ||
       dipto.startsWith("https://www.instagram.com/p/") ||
@@ -58,18 +58,18 @@ module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
       );
       const bb = aa.data;
       const shortUrl = await tinyurl.shorten(bb.result);
-      const MSG = `✅ 🔗 Download Url: ${shortUrl}`;
+      const MSG = `âœ… ðŸ”— Download Url: ${shortUrl}`;
       let ex;
       let cp;
       if (bb.result.includes(".jpg")) {
         ex = ".jpg";
-        cp = "Here's your Photo <😘";
+        cp = "Here's your Photo <ðŸ˜˜";
       } else if (bb.result.includes(".png")) {
         ex = ".png";
-        cp = "Here's your Photo <😘";
+        cp = "Here's your Photo <ðŸ˜˜";
       } else if (bb.result.includes(".jpeg")) {
         ex = ".jpeg";
-        cp = "Here's your Photo <😘";
+        cp = "Here's your Photo <ðŸ˜˜";
       } else {
         ex = ".mp4";
         cp = bb.cp;
