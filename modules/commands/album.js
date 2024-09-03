@@ -12,7 +12,7 @@ module.exports.config = {
   name: "album",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "RAHAT",
+  credits: "Khan Rahul RK",
   description: "Displays album options for selection.",
   usePrefix: true,
   Prefix: true,
