@@ -1,9 +1,9 @@
 module.exports = {
   config: {
-    name: "pfp",
+    name: "profilev2",
     aliases: ["pfp", "pp"],
     version: "1.1",
-    credits: "RAHAT",
+    credits: "dipto",
     countDown: 5,
     hasPermssion: 0,
     description: "PROFILE image",
@@ -27,7 +27,7 @@ module.exports = {
       } else {
         avt = await getAvatarUrl(uid);
       }
-      api.sendMessage({ body: "এই নাও তার Profile 😀\n\nCreate By Khan Rahul Rk", attachment: (await require('axios').get(avt,{ responseType: 'stream' })).data }, event.threadID, event.messageID);
+      api.sendMessage({ body: "", attachment: (await require('axios').get(avt,{ responseType: 'stream' })).data }, event.threadID, event.messageID);
     } catch (error) {
       api.sendMessage(`⚠️ Error: ${error.message}`,event.threadID, event.messageID);
     }
