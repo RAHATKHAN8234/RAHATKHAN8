@@ -12,10 +12,10 @@ module.exports.config = {
   name: "album",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "Khan Rahul RK",
+  credits: "RAHUL",
   description: "Displays album options for selection.",
   usePrefix: true,
-  category: "Media",
+  commandCategory: "Media",
   usages:
     "Only or add [cartoon/photo/lofi/sad/islamic/funny/horny/anime/aesthetic/cat/lyrics/love/sigma]",
   cooldowns: 5,
