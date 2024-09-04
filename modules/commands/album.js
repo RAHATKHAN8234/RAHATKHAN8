@@ -15,7 +15,6 @@ module.exports.config = {
   credits: "Khan Rahul RK",
   description: "Displays album options for selection.",
   usePrefix: true,
-  prefix: true,
   category: "Media",
   usages:
     "Only or add [cartoon/photo/lofi/sad/islamic/funny/horny/anime/aesthetic/cat/lyrics/love/sigma]",
