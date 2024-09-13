@@ -23,11 +23,11 @@ module.exports.onLoad = async ({ api }) => {
       message: "এখন আছরের আজান দিবে সবাই নামাজ আদায় করেন",
       url: "https://i.imgur.com/hprI30O.jpeg"
     },
-    "06:45 PM": {
+    "06:05 PM": {
       message: "এখন মাগরিব এর আজান হবে সবাই নামাজ আদায় করবেন",
       url: "https://i.imgur.com/vlFSFL6.jpeg"
     },
-    "08:00 PM": {
+    "07:45 PM": {
       message: "এখন এশার আজান দিবে এই সব কাজ অফ করে নামাজ পড়েন",
       url: "https://i.imgur.com/7K67WOG.jpeg"
     }
