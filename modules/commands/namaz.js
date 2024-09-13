@@ -1,50 +1,44 @@
-const axios = require("axios");
-const baseApiUrl = async () => {
-  const base = await axios.get(
-    `http://api.aladhan.com/v1/timingsByAddress?address=`
-  );
-  return base.data.api;
-};
 module.exports.config = {
   name: "namaz",
-  aliases: ["prayer"],
-  version: "1.0",
-  credits: "Khan Rahul RK",
-  usePrefix: true,
-  cooldowns: 5,
+  version: "1.0.0",
   hasPermssion: 0,
-  description: "View Prayer time",
-  commandCategory: "𝗜𝗦𝗟𝗔𝗠",
-  usages: "{pn} <city name>",
+  credits: "RAHAT",
+  description: " namaz time",
+  commandCategory: "Islamic",
+  usages: "namaz time information",
+  cooldowns: 5
 };
 
-module.exports.run = async function ({ api, args, event }) {
-  try {
-    const cityName = args.join(" ");
-    const apiUrl = `${await baseApiUrl()}/namaj?cityName=${encodeURIComponent(cityName)}`;
-    const response = await axios.get(apiUrl);
-    const {
-      fajr,
-      sunrise,
-      dhuhr,
-      asr,
-      maghrib,
-      isha
-    } = response.data.prayerTimes;
+module.exports.run = async function({ api, event, args }) {
+    const axios = require("axios")
+    const request = require("request")
+    const fs = require("fs-extra")
+    const n = global.nayan_api;
+    const content = args.join(" ");
+    const res = await axios.get(`http://api.aladhan.com/v1/timingsByAddress?address=${content}`);
+    const { Fajr, Dhuhr, Asr, Sunset, Maghrib, Isha, Imsak, Midnight} = res.data.data.timings;
+    const date = res.data.data.date.readable;
+    const mo = res.data.data.date.gregorian.month.en;
+    const hijri = res.data.data.date.hijri.date;
+    const mon = res.data.data.date.hijri.month.en;
+    var msg = [];
 
-    const prayerTimes =
-      "🕋🌙 𝙿𝚛𝚊𝚢𝚎𝚛 𝚝𝚒𝚖𝚎𝚜 🕋🌙\n" +
-      "🏙️ 𝙲𝚒𝚝𝚢 𝙽𝚊𝚖𝚎: " + cityName + "\n\n" +
-      "🕌 𝙵𝚊𝚓𝚛: " + fajr + "\n" +
-      "🕌 𝚂𝚞𝚗𝚛𝚒𝚜𝚎: " + sunrise + "\n" +
-      "🕌 𝙳𝚑𝚞𝚛: " + dhuhr + "\n\n" +
-      "🕌 𝙰𝚜𝚛: " + asr + "\n" +
-      "🕌 𝙼𝚊𝚐𝚑𝚛𝚒𝚋: " + maghrib + "\n" +
-      "🕌 𝙸𝚜𝚑𝚊: " + isha + "\n";
 
-    api.sendMessage(prayerTimes, event.threadID);
-  } catch (e) {
-    console.error(e);
-    api.sendMessage(`Error: ${e.message}`, event.threadID);
-  }
-};
+const pic = (
+      await axios.get(
+        'https://i.imgur.com/gZuqamL.jpeg',
+        { responseType: 'stream' }
+      )
+    ).data;
+
+    {
+        msg += `╭•┄┅═══❁🌺❁═══┅┄•╮\n      𝚃𝙸𝙼𝙴 𝙾𝙵 𝚂𝙰𝙻𝙰𝚃𝙰\n╰•┄┅═══❁🌺❁═══┅┄•╯\n\n⋆✦⋆⎯⎯⎯⋆𝚃𝙸𝙼𝙴⋆⎯⎯⎯⋆✦\n•—»✨𝙵𝙰𝙹𝙰𝚁: ${Fajr} \n•—»✨𝚉𝙰𝙷𝙰𝚁: ${Dhuhr} \n•—»✨𝙰𝚂𝙰𝚁 :  ${Asr} \n•—»✨𝙼𝙰𝙶𝚁𝙸𝙱 : ${Maghrib} \n •—»✨𝙸𝚂𝙷𝙰 :  ${Isha} \n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆\n\n ⋆✦⋆⎯⎯⎯⋆𝚃𝙸𝙼𝙴⋆⎯⎯⎯⋆✦\n  •—»✨𝚂𝚄𝙽𝚂𝙴𝚃 : ${Sunset} \n •—»✨𝙼𝙸𝙳-𝙽𝙸𝙶𝙷𝚃:  ${Midnight} \n  •—»✨𝙸𝚂𝙼𝙰𝙺: ${Imsak} \n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆\n \n⋆✦⋆⎯⎯⎯⋆𝚃𝙸𝙼𝙴⋆⎯⎯⎯⋆✦\n\n    𝙳𝙰𝚃𝙴: ${date} \n     𝙼𝙾𝙽𝚃𝙷-𝙴𝙽:  ${mo} \n     𝙷𝙸𝙹𝚁𝙸: ${hijri} \n     𝙼𝙾𝙽𝚃𝙷-𝙰𝚁: ${mon} \n\n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`
+    }
+
+    return api.sendMessage({
+        body: msg,
+        attachment: pic
+
+
+    }, event.threadID, event.messageID);
+}
