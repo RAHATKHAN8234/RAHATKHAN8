@@ -1,10 +1,14 @@
-module.exports.config = {
-    name: evan",
-    version: "1.0.0",
-    hasPermssion: 1,
-    credits: "RAHAT",
-    description: "Tag all members",
-    commandCategory: "Group",
+module.exports = {
+	config: {
+		name: "evan",
+		version: "1.1",
+		author: "RAHAT",
+		countDown: 5,
+		role: 1,
+		shortDescription: {
+			vi: "Tag tất cả thành viên",
+			en: "Tag all members"
+		},
 		longDescription: {
 			vi: "Tag tất cả thành viên trong nhóm chat của bạn",
 			en: "Tag all members in your group chat"
