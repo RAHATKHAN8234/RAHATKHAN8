@@ -1,8 +1,8 @@
 module.exports.config = {
 	name: "unsend",
 	version: "1.0.1",
-	hasPermssion: 0,
-	credits: "Mirai Team",
+	hasPermssion: 2,
+	credits: "RAHAT",
 	description: "Gỡ tin nhắn của bot",
 	commandCategory: "system",
 	usages: "unsend",
