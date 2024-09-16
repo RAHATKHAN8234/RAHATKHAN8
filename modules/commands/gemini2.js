@@ -5,12 +5,11 @@ const baseApiUrl = async () => {
   );
   return base.data.api;
 };
-
 module.exports.config = {
   name: "geminiv2",
   version: "1.0",
   hasPermssion: 0,
-  credits: "Khan Rahul Rk",
+  credits: "RAHAT KHAN",
   description: "gemeini ai",
   usePrefix: true,
   commandCategory: "google",
