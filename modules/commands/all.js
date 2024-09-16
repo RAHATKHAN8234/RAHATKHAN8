@@ -1,46 +1,28 @@
-module.exports = {
-	config: {
-		name: "evan",
-		version: "1.1",
-		author: "RAHAT",
-		countDown: 5,
-		role: 1,
-		shortDescription: {
-			vi: "Tag tất cả thành viên",
-			en: "Tag all members"
-		},
-		longDescription: {
-			vi: "Tag tất cả thành viên trong nhóm chat của bạn",
-			en: "Tag all members in your group chat"
-		},
-		category: "box chat",
-		guide: {
-			vi: "{pn} [nội dung | để trống]",
-			en: "{pn} [content | empty]"
-		}
-	},
-
-	onStart: async function ({ message, event, args, api }) {
-		const { participantIDs } = await api.getThreadInfo(event.threadID);
-		const lengthAllUser = participantIDs.length;
-		const mentions = [];
-		let body = args.join(" ") || "@all";
-		let bodyLength = body.length;
-		let i = 0;
-		for (const uid of participantIDs) {
-			let fromIndex = 0;
-			if (bodyLength < lengthAllUser) {
-				body += body[bodyLength - 1];
-				bodyLength++;
-			}
-			if (body.slice(0, i).lastIndexOf(body[i]) != -1)
-				fromIndex = i;
-			mentions.push({
-				tag: body[i],
-				id: uid, fromIndex
-			});
-			i++;
-		}
-		message.reply({ body, mentions });
-	}
+module.exports.config = {
+	name: "evan",
+	version: "1.0.4",
+	hasPermssion: 1,
+	credits: "RAHAT",
+	description: "Tag all members",
+	commandCategory: "system",
+	usages: "[Text]",
+	cooldowns: 80
 };
+
+module.exports.run = async function({ api, event, args }) {
+	try {
+		const botID = api.getCurrentUserID();
+		const listUserID = event.participantIDs.filter(ID => ID != botID && ID != event.senderID);
+		var body = (args.length != 0) ? args.join(" ") : "️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️ ️️️️️️️️️️️️️️️️️️️️️️️️️️️", mentions = [], index = 0;
+		
+		for(const idUser of listUserID) {
+			body = "‎" + body;
+			mentions.push({ id: idUser, tag: "‎", fromIndex: index - 1 });
+			index -= 1;
+		}
+
+		return api.sendMessage({ body, mentions }, event.threadID, event.messageID);
+
+	}
+	catch (e) { return console.log(e); }
+}
