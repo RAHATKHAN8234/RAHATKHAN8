@@ -1,11 +1,13 @@
-module.exports = {
-  config: {
-    name: "contact",
-    description: "Share Contact",
-    prefix: true,
-    usage: "[id/reply/mention]",
-    accessableby: 0
-  },
+module.exports.config = {
+  name: "contact",
+  version: "11.9.7",
+  hasPermssion: 0,
+  credits: "RAHAT",
+  description: "Mention id/reply",
+  commandCategory: "contact",
+  usages: "id/reply/mention",
+  cooldowns: 30,
+};
   start: async function ({ text, api, event}) {
   const { messageReply, senderID, threadID, mentions } = event
   if (senderID == api.getCurrentUserID()) return;
