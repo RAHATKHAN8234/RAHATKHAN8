@@ -1,7 +1,7 @@
 module.exports.config = {
     name: "mygf",
     version: "2.6.0",
-    hasPermssion: 0,
+    hasPermssion: 2,
     credits: "RAHAT",
     description: "",
     commandCategory: "Love",
